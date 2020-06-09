@@ -28,3 +28,13 @@ function moveHand1(handHeight) {
 }
 
 window.onload = initializeHand();
+
+// window.addEventListener('scroll', () => {
+//   const scrolled = window.scrollY;
+//   if (scrolled >= 2650) {
+//     document.querySelector('.witchhead').style.transform = 'rotate(0deg) ';
+//   };
+//   if (scrolled >= 3300) {
+//     document.querySelector('#witchmouth').style.transform = `translate(65%, 720%)`;
+//   };
+// });

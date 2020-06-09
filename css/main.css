@@ -68,7 +68,7 @@ h1 {
               top 0.5s ease-out,
               transform 0.2s ease-out;
   transition-property: left, top, transform;
-  transition-duration: 0.5s, 0.5s, 0.2s;
+  transition-duration: 0.5s, 0.5s, 0.25s;
   transition-timing-function: ease-out;
   transition-delay: 0s, 0s, 0.2s;
 }
@@ -96,6 +96,7 @@ h1 {
   transform: rotate(180deg) translateX(20px);
   z-index: 1;
   margin-top: 150px;
+  margin-left: 20px;
 }
 
 .witchhead {
@@ -103,8 +104,13 @@ h1 {
   transform: rotate(180deg);
   z-index: 400;
   height: 400px;
-  position: relative;
-  bottom: 450px;
+  position: sticky;
+  bottom: 190px;
+  margin-top: 2024px;
+  margin-left: 20px;
+  /* transition: transform 2.5s ease-in-out; */
+  /* transition-delay: 0.8s; */
+  transform-origin: 50% 70%;
 }
 
 #witchhead {
@@ -118,4 +124,6 @@ h1 {
   z-index: 200;
   position: absolute;
   transform: translate(65%, 562%);
+  /* transition: transform 0.4s ease-in-out; */
+  /* transition-delay: 2.4s; */
 }
