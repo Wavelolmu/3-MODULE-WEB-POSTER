@@ -6,6 +6,7 @@
 
 :root {
   --hand-height: 600px;
+  --witch-body-width: 90vw;
 }
 
 *{
@@ -60,6 +61,7 @@ h1 {
 }
 
 #hand1 {
+  z-index: 101;
   height: var(--hand-height);
   position: absolute;
   transition: left 0.5s ease-out,
@@ -73,7 +75,7 @@ h1 {
 
 #i--angel {
   position: fixed;
-  width: 700px;
+  width: 800px;
   z-index: 101;
 }
 
@@ -90,7 +92,30 @@ h1 {
 }
 
 #witchbody {
-  width: 90vw;
-  transform: rotate(180deg);
+  width: var(--witch-body-width);
+  transform: rotate(180deg) translateX(20px);
   z-index: 1;
+  margin-top: 150px;
+}
+
+.witchhead {
+  width: calc(var(--witch-body-width) / 3.220339);
+  transform: rotate(180deg);
+  z-index: 400;
+  height: 400px;
+  position: relative;
+  bottom: 450px;
+}
+
+#witchhead {
+  width: calc(var(--witch-body-width) / 3.220339);
+  position: absolute;
+  z-index: 100;
+}
+
+#witchmouth {
+  width: calc(var(--witch-body-width) / 7.21518988);
+  z-index: 200;
+  position: absolute;
+  transform: translate(65%, 562%);
 }

@@ -27,4 +27,4 @@ function moveHand1(handHeight) {
   document.querySelector('#hand1').style.transform = `rotate(${rotateAngle})`;
 }
 
-// window.onload = initializeHand();
+window.onload = initializeHand();
