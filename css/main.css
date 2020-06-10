@@ -27,27 +27,37 @@ body {
   justify-content: center;
   align-items: center;
   background-color: white;
-  z-index: 100;
+  z-index: 1000;
   transition: opacity 0.6s ease-in;
   transition-delay: 0.3s;
+  opacity: 1;
+  padding-top: 7%; 
 }
 
 #logo {
   width: 400px;
   text-align: center;
+  z-index: 10001;
+  opacity: 1;
+  transition: opacity 0.6s ease-in;
+  transition-delay: 0.3s;
 }
 
 h1 {
   position: relative;
   left: 165px;
   top: -70px;
+  z-index: 10001;
+  opacity: 1;
+  transition: opacity 0.6s ease-in;
+  transition-delay: 0.3s;
 }
 
 #logo,
 h1 {
   transition: opacity 0.6s ease-in;
   transition-delay: 0.3s;
-  opacity: 0;
+  opacity: 1;
 }
 
 #angel {
@@ -147,7 +157,6 @@ h1 {
   50% {
     background-size: radial-gradient(circle at center, red 0, black 70%);
   }
-
 }
 
 #hell {
@@ -162,10 +171,47 @@ h1 {
   transition-property: opacity;
   transition-duration: 0.2s;
   transition-timing-function: ease-in;
+  display: none;
 }
 
 .hellwordss {
   position: absolute;
   height: 100vh;
   width: 99vw;
+  z-index: 3000;
+}
+
+#hellword2,
+#hellword3,
+#hellword4,
+#hellword5,
+#hellword6 {
+  display: none;
+}
+
+.demonpic {
+  position: absolute;
+  z-index: 2900;
+}
+
+#demonpic1 {
+  height: 100vh;
+  max-height: 100vh;
+  min-height: 26vh;
+}
+#demonpic2 {
+  height: 100vh;
+  max-height: 100vh;
+  /* transform: translateX(-25vw); */
+}
+#demonpic3 {
+  height: 100vh;
+  max-height: 100vh;
+  /* transform: translateX(25vw); */
+}
+
+.helldemons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

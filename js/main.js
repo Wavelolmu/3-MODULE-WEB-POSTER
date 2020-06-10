@@ -1,4 +1,5 @@
 window.onload = function starterApper() {
+  document.querySelector('#starter').style.opacity = '1';
   document.querySelector('#logo').style.opacity = '1';
   document.querySelector('h1').style.opacity = '1';
 };
@@ -10,7 +11,7 @@ function starterDisappear() {
   setTimeout(() => document.querySelector('#starter').style.display = 'none', 1500);
 };
 
-setTimeout(starterDisappear, 2000);
+window.onload = setTimeout(starterDisappear, 2200);
 
 function initializeHand(){
   var handHeight = String(getComputedStyle(document.documentElement).getPropertyValue('--hand-height')).slice(0, 4);
@@ -28,16 +29,6 @@ function moveHand1(handHeight) {
 
 window.onload = initializeHand();
 
-// window.addEventListener('scroll', () => {
-//   const scrolled = window.scrollY;
-//   if (scrolled >= 2650) {
-//     document.querySelector('.witchhead').style.transform = 'rotate(0deg) ';
-//   };
-//   if (scrolled >= 3300) {
-//     document.querySelector('#witchmouth').style.transform = `translate(65%, 720%)`;
-//   };
-// });
-
 window.addEventListener('scroll', () => {
   const head = document.querySelector('.witchhead');
   const mouth = document.querySelector('#witchmouth');
@@ -50,7 +41,6 @@ window.addEventListener('scroll', () => {
   if (scrolled < 2760) {
     head.style.transform = 'rotate(180deg)';
     mouth.style.transform = `translate(65%, 562%)`;
-    console.log(rate);
   } else {
     head.style.transform = 'rotate(' + rate + 'deg)';
     mouth.style.transform = `translate(65%, 562%)`;
@@ -73,6 +63,7 @@ window.addEventListener('scroll', () => {
     dot.style.height = 1;
     dot.style.width = 1;
     dot.style.background = `none`;
+    document.querySelector('#hell').style.display = 'none';
   };
   if (scrolled >= 4400) {
     dot.style.background = `radial-gradient(circle at center, black 10%, red 70%)`;
@@ -83,6 +74,7 @@ window.addEventListener('scroll', () => {
     dot.style.height = dotRate + 'vh';
     dot.style.width = dotRate + 'vh';
     dot.style.transform = 'translate(' + -dotRate * 3.16 + 'px, ' + dotRate * 2.3 + 'px)';
+    document.querySelector('#hell').style.display = 'block';
   };
   if (scrolled >= 5200) {
     hell.style.opacity = '1';
@@ -91,9 +83,67 @@ window.addEventListener('scroll', () => {
   };
 });
 
-function hellSlides() {
-  spaceH = screen.height - handHeight - 50;
-  spaceW = screen.width - (handHeight / 1.5) - 50;
-  document.querySelector('#hand1').style.top = Math.round(Math.random() * spaceH) + 'px';
-  document.querySelector('#hand1').style.left = Math.round(Math.random() * spaceW) + 'px';
+var i = 1;
+
+function apocalypse(){
+  var demonHeight1 = Math.round(Math.random() * screen.height);
+  spaceH1 = screen.height - demonHeight1;
+  spaceW1 = screen.width - demonHeight1;
+
+  var demonHeight2 = Math.round(Math.random() * screen.height);
+  spaceH2 = screen.height - demonHeight2;
+  spaceW2 = screen.width - demonHeight2;
+
+  var demonHeight3 = Math.round(Math.random() * screen.height);
+  spaceH3 = screen.height - demonHeight3;
+  spaceW3 = screen.width - demonHeight3;
+
+  setInterval(hellSlides, 900);
+};
+
+function hellSlides(demonHeight1, demonHeight2, demonHeight3) {
+  const demon1 = document.querySelector('#demonpic1');
+  const demon2 = document.querySelector('#demonpic2');
+  const demon3 = document.querySelector('#demonpic3');
+
+  if (i % 2 == 1) {
+    document.querySelector('#hell').style.backgroundColor = `black`;
+  } else {
+    document.querySelector('#hell').style.backgroundColor = `red`;
+  };
+
+  var rand1 = Math.ceil(Math.random() * i);
+  if (rand1 > 6) { rand1 = 6 };
+  if (rand1 < 1) { rand1 = 1 };
+  var rand2 = Math.ceil(Math.random() * i);
+  if (rand2 > 6) { rand2 = 6 };
+  if (rand2 < 1) { rand2 = 1 };
+  var rand3 = Math.ceil(Math.random() * i);
+  if (rand3 > 6) { rand3 = 6 };
+  if (rand3 < 1) { rand3 = 1 };
+
+  demon1.src = 'pics/hell/demons/1demon' + rand1 + '.gif';
+  demon2.src = 'pics/hell/demons/2demon' + rand2 + '.gif';
+  demon3.src = 'pics/hell/demons/3demon' + rand3 + '.gif';
+
+  document.querySelector('#hellword1').src = 'pics/hell/' + i + '.svg';
+
+  demon1.style.height = Math.round(Math.random() * screen.height) / 2 + 70 + 'vh';
+  demon1.style.top = Math.round(Math.random() * spaceH1) - 100 + 'px';
+  demon1.style.left = Math.round(Math.random() * spaceW1) + 'px';
+  demon1.style.zIndex = Math.round(Math.random() * 1000);
+
+  demon2.style.height = Math.round(Math.random() * screen.height) / 2 + 40 + 'vh';
+  demon2.style.top = Math.round(Math.random() * spaceH2) - 100 + 'px';
+  demon2.style.left = Math.round(Math.random() * spaceW2) + 'px';
+  demon2.style.zIndex = Math.round(Math.random() * 1000);
+
+  demon3.style.height = Math.round(Math.random() * screen.height) / 3 + 30 + 'vh';
+  demon3.style.top = Math.round(Math.random() * spaceH3) - 100 + 'px';
+  demon3.style.left = Math.round(Math.random() * spaceW3) + 'px';
+  demon3.style.zIndex = Math.round(Math.random() * 1000);
+  i++;
+  if (i == 7) { i = 1 };
 }
+
+window.onload = apocalypse();
