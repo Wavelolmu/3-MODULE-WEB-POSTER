@@ -7,6 +7,8 @@
 :root {
   --hand-height: 600px;
   --witch-body-width: 90vw;
+  --angel-width: 800px;
+  --media: 1;
 }
 
 *{
@@ -21,24 +23,26 @@ body {
 #starter {
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: white;
   z-index: 1000;
-  transition: opacity 0.6s ease-in;
+  transition: opacity 0.7s ease-in;
   transition-delay: 0.3s;
   opacity: 1;
-  padding-top: 7%; 
+  padding-top: 4%;
 }
 
 #logo {
   width: 400px;
   text-align: center;
   z-index: 10001;
-  opacity: 1;
+  opacity: 0;
   transition: opacity 0.6s ease-in;
   transition-delay: 0.3s;
 }
@@ -48,17 +52,11 @@ h1 {
   left: 165px;
   top: -70px;
   z-index: 10001;
-  opacity: 1;
+  opacity: 0;
   transition: opacity 0.6s ease-in;
   transition-delay: 0.3s;
 }
 
-#logo,
-h1 {
-  transition: opacity 0.6s ease-in;
-  transition-delay: 0.3s;
-  opacity: 1;
-}
 
 #angel {
   z-index: 2;
@@ -74,9 +72,6 @@ h1 {
   z-index: 101;
   height: var(--hand-height);
   position: absolute;
-  transition: left 0.5s ease-out,
-              top 0.5s ease-out,
-              transform 0.2s ease-out;
   transition-property: left, top, transform;
   transition-duration: 0.5s, 0.5s, 0.25s;
   transition-timing-function: ease-out;
@@ -85,8 +80,18 @@ h1 {
 
 #i--angel {
   position: fixed;
-  width: 800px;
+  width: var(--angel-width);
   z-index: 101;
+  /* transition: opacity 0.7s ease-in; */
+  opacity: 1;
+}
+#i--demon {
+  position: fixed;
+  width: 90vw;
+  z-index: 101;
+  transform: translateY(0px);
+  /* transition: opacity 0.7s ease-in; */
+  opacity: 0;
 }
 
 #witch {
@@ -192,12 +197,12 @@ h1 {
 .demonpic {
   position: absolute;
   z-index: 2900;
+  min-height: 70vh;
 }
 
 #demonpic1 {
   height: 100vh;
   max-height: 100vh;
-  min-height: 26vh;
 }
 #demonpic2 {
   height: 100vh;
@@ -214,4 +219,42 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+/*
+1680x1050 (MacBook Pro ’15.4)
+1440x900 (MacBook Pro ’15)
+1366x768 (MacBook Air ’11.6)
+1280x800 (MacBook Pro ’13)
+1024x768 (iPad Landscape)
+768x1024 (iPad Portrait)
+320–475
+*/
+
+@media (max-width: 500px) {
+  :root {
+    --hand-height: 900px;
+    --angel-width: 120vw;
+
+  }
+
+  #i--angel {
+    content:url("../pics/angel1.svg");
+  }
+
+}
+@media (max-width: 768px) {
+  :root {
+    --hand-height: 300px;
+    --angel-width: 120vw;
+  }
+
+  #i--angel {
+    content:url("../pics/angel1.svg");
+  }
+}
+@media (max-width: 1024px) {
+  :root {
+
+  }
 }
