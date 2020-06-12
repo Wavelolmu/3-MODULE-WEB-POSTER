@@ -11,12 +11,14 @@ function starterDisappear() {
   setTimeout(() => document.querySelector('#starter').style.display = 'none', 1500);
 };
 
+
+
 if (screen.width <= 500) {
-  var media = -6;
+  var media = 1;
 } else if (screen.width <= 768) {
   media = 1;
 } else if (screen.width <= 1024) {
-  media = -2;
+  media = 1;
 } else {
   media = 1;
 }
@@ -24,15 +26,22 @@ if (screen.width <= 500) {
 
 function initializeHand(){
   var handHeight = String(getComputedStyle(document.documentElement).getPropertyValue('--hand-height')).slice(0, 4);
-  spaceH = screen.height - handHeight - 50 * media;
-  spaceW = screen.width - (handHeight / 1.5) - 50 * media;
+  spaceH = screen.height - handHeight;
+  spaceW = screen.width - (handHeight / 1.5);
+  if (spaceH < -10) {
+    spaceH = spaceH * -1;
+  }
+  if (spaceW < -10) {
+    spaceW = spaceW * -1;
+  }
   setInterval(moveHand1, 700);
-  console.log(media);
+  console.log(screen.height);
+  console.log(handHeight);
 }
 
 function moveHand1(handHeight) {
-  document.querySelector('#hand1').style.top = Math.round(Math.random() * spaceH) + 'px';
-  document.querySelector('#hand1').style.left = Math.round(Math.random() * spaceW) + 'px';
+  document.querySelector('#hand1').style.top = Math.round(Math.random() * spaceH * media) + 'px';
+  document.querySelector('#hand1').style.left = Math.round(Math.random() * spaceW * media) + 'px';
   var rotateAngle  = Math.round(Math.random() * 120 - Math.random() * 120) + 'deg';
   document.querySelector('#hand1').style.transform = `rotate(${rotateAngle})`;
 }
