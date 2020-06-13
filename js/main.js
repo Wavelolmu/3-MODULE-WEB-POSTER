@@ -14,34 +14,27 @@ function starterDisappear() {
 
 
 if (screen.width <= 500) {
-  var media = 1;
+  var media = 0;
 } else if (screen.width <= 768) {
-  media = 1;
+  media = 50;
 } else if (screen.width <= 1024) {
-  media = 1;
+  media = 50;
 } else {
-  media = 1;
+  media = 50;
 }
 
 
 function initializeHand(){
   var handHeight = String(getComputedStyle(document.documentElement).getPropertyValue('--hand-height')).slice(0, 4);
-  spaceH = screen.height - handHeight;
-  spaceW = screen.width - (handHeight / 1.5);
-  if (spaceH < -10) {
-    spaceH = spaceH * -1;
-  }
-  if (spaceW < -10) {
-    spaceW = spaceW * -1;
-  }
+  spaceH = screen.height - handHeight - media;
+  spaceW = screen.width - (handHeight / 1.5) - media;
   setInterval(moveHand1, 700);
-  console.log(screen.height);
-  console.log(handHeight);
+  console.log(spaceH);
 }
 
 function moveHand1(handHeight) {
-  document.querySelector('#hand1').style.top = Math.round(Math.random() * spaceH * media) + 'px';
-  document.querySelector('#hand1').style.left = Math.round(Math.random() * spaceW * media) + 'px';
+  document.querySelector('#hand1').style.top = Math.round(Math.random() * spaceH) + 'px';
+  document.querySelector('#hand1').style.left = Math.round(Math.random() * spaceW) + 'px';
   var rotateAngle  = Math.round(Math.random() * 120 - Math.random() * 120) + 'deg';
   document.querySelector('#hand1').style.transform = `rotate(${rotateAngle})`;
 }
@@ -49,6 +42,11 @@ function moveHand1(handHeight) {
 window.onload = initializeHand();
 
 window.addEventListener('scroll', () => {
+
+  var scrollWord1 = getComputedStyle(document.documentElement).getPropertyValue('--scrollWord1');
+  var scrollWord2 = getComputedStyle(document.documentElement).getPropertyValue('--scrollWord2');
+  var scrollWord3 = getComputedStyle(document.documentElement).getPropertyValue('--scrollWord3');
+
   const head = document.querySelector('.witchhead');
   const mouth = document.querySelector('#witchmouth');
   const dot = document.querySelector('#helldot');
@@ -56,21 +54,21 @@ window.addEventListener('scroll', () => {
   const demon = document.querySelector('#i--demon');
   const angel = document.querySelector('#i--angel');
   const scrolled = window.scrollY;
-  var rate = (scrolled - 2760) / 5 - 180;
+  var rate = (scrolled - scrollWord2) / 5 - 180;
   var dotRate = (scrolled - 4400) / 3 ;
 
 
-  if (scrolled >= 1530) {
+  if (scrolled >= scrollWord1) {
     angel.style.opacity = 0;
-    demon.style.opacity = (scrolled - 1530) / 250;
-  } else if (scrolled >= 1300) {
+    demon.style.opacity = (scrolled - scrollWord1) / 250;
+  } else if (scrolled >= (scrollWord1 - 230)) {
     demon.style.opacity = 0;
-    angel.style.opacity = (1500 - scrolled) / 200;
+    angel.style.opacity = (scrollWord1 - 30 - scrolled) / 200;
   };
 
   if (scrolled >= 5300) {scrolled = 5300};
 
-  if (scrolled < 2760) {
+  if (scrolled < scrollWord2) {
     head.style.transform = 'rotate(180deg)';
     mouth.style.transform = `translate(65%, 562%)`;
   } else {
@@ -83,7 +81,7 @@ window.addEventListener('scroll', () => {
     dot.style.background = `none`;
     if (rate < 0) {rate === 0};
   };
-  if (scrolled >= 3660) {
+  if (scrolled >= scrollWord3) {
     head.style.transform = 'rotate(0deg)';
     dot.style.bottom = `-55px`;
     dot.style.backgroundColor = `white`;
