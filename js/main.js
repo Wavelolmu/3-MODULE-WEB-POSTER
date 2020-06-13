@@ -1,7 +1,7 @@
-function starterApper() {
+window.onload = function starterApper() {
+  document.querySelector('#starter').style.opacity = '1';
   document.querySelector('#logo').style.opacity = '1';
   document.querySelector('h1').style.opacity = '1';
-  setTimeout(starterDisappear, 2000);
 };
 
 function starterDisappear() {
@@ -11,25 +11,13 @@ function starterDisappear() {
   setTimeout(() => document.querySelector('#starter').style.display = 'none', 1500);
 };
 
-
-
-if (screen.width <= 500) {
-  var media = 0;
-} else if (screen.width <= 768) {
-  media = 50;
-} else if (screen.width <= 1024) {
-  media = 50;
-} else {
-  media = 50;
-}
-
+window.onload = setTimeout(starterDisappear, 2000);
 
 function initializeHand(){
   var handHeight = String(getComputedStyle(document.documentElement).getPropertyValue('--hand-height')).slice(0, 4);
-  spaceH = screen.height - handHeight - media;
-  spaceW = screen.width - (handHeight / 1.5) - media;
+  spaceH = screen.height - handHeight - 50;
+  spaceW = screen.width - (handHeight / 1.5) - 50;
   setInterval(moveHand1, 700);
-  console.log(spaceH);
 }
 
 function moveHand1(handHeight) {
@@ -42,11 +30,6 @@ function moveHand1(handHeight) {
 window.onload = initializeHand();
 
 window.addEventListener('scroll', () => {
-
-  var scrollWord1 = getComputedStyle(document.documentElement).getPropertyValue('--scrollWord1');
-  var scrollWord2 = getComputedStyle(document.documentElement).getPropertyValue('--scrollWord2');
-  var scrollWord3 = getComputedStyle(document.documentElement).getPropertyValue('--scrollWord3');
-
   const head = document.querySelector('.witchhead');
   const mouth = document.querySelector('#witchmouth');
   const dot = document.querySelector('#helldot');
@@ -54,21 +37,21 @@ window.addEventListener('scroll', () => {
   const demon = document.querySelector('#i--demon');
   const angel = document.querySelector('#i--angel');
   const scrolled = window.scrollY;
-  var rate = (scrolled - scrollWord2) / 5 - 180;
+  var rate = (scrolled - 2760) / 5 - 180;
   var dotRate = (scrolled - 4400) / 3 ;
 
 
-  if (scrolled >= scrollWord1) {
+  if (scrolled >= 1530) {
     angel.style.opacity = 0;
-    demon.style.opacity = (scrolled - scrollWord1) / 250;
-  } else if (scrolled >= (scrollWord1 - 230)) {
+    demon.style.opacity = (scrolled - 1530) / 250;
+  } else if (scrolled >= 1300) {
     demon.style.opacity = 0;
-    angel.style.opacity = (scrollWord1 - 30 - scrolled) / 200;
+    angel.style.opacity = (1500 - scrolled) / 200;
   };
 
   if (scrolled >= 5300) {scrolled = 5300};
 
-  if (scrolled < scrollWord2) {
+  if (scrolled < 2760) {
     head.style.transform = 'rotate(180deg)';
     mouth.style.transform = `translate(65%, 562%)`;
   } else {
@@ -81,7 +64,7 @@ window.addEventListener('scroll', () => {
     dot.style.background = `none`;
     if (rate < 0) {rate === 0};
   };
-  if (scrolled >= scrollWord3) {
+  if (scrolled >= 3660) {
     head.style.transform = 'rotate(0deg)';
     dot.style.bottom = `-55px`;
     dot.style.backgroundColor = `white`;

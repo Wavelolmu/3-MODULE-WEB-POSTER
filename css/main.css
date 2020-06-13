@@ -8,13 +8,11 @@
   --hand-height: 600px;
   --witch-body-width: 90vw;
   --angel-width: 800px;
-  --witchhead-top: -100px;
+  --witchhead-top: 2024px;
   --media: 1;
   --scrollWord1: 1530;
   --witch-body-top: 150px;
-  --witchhead-bottom: 100px;
-  --scrollWord2: 2760;
-  --scrollWord3: 3660;
+  --witchhead-bottom: 190px;
 }
 
 *{
@@ -24,7 +22,6 @@
 body {
   font-family: 'Keleti';
   overflow-x: hidden;
-  height: auto;
 }
 
 #starter {
@@ -49,7 +46,7 @@ body {
   width: 400px;
   text-align: center;
   z-index: 10001;
-  opacity: 0;
+  /* opacity: 0; */
   transition: opacity 0.6s ease-in;
   transition-delay: 0.3s;
 }
@@ -59,7 +56,7 @@ h1 {
   left: 165px;
   top: -70px;
   z-index: 10001;
-  opacity: 0;
+  /* opacity: 0; */
   transition: opacity 0.6s ease-in;
   transition-delay: 0.3s;
 }
@@ -121,7 +118,7 @@ h1 {
   width: calc(var(--witch-body-width) / 3.220339);
   transform: rotate(180deg);
   z-index: 400;
-  height: calc(var(--witch-body-width) / 3.220339 * 1.29190207);
+  height: 400px;
   position: sticky;
   bottom: var(--witchhead-bottom);
   margin-top: var(--witchhead-top);
@@ -149,7 +146,7 @@ h1 {
   border-radius: 50%;
   z-index: 1;
   position: absolute;
-  bottom: 25px;
+  bottom: -55px;
   background-color: white;
   margin-left: 50%;
   transition-property: bottom, background-color, background;
@@ -231,29 +228,18 @@ h1 {
 
 @media (min-width: 176px) and (max-width: 500px) {
   :root {
-    --hand-height: 250px;
+    --hand-height: 350px;
     --angel-width: 70vw;
     --witch-body-width: 129vw;
-    --witchhead-top: 200%;
-    --scrollWord1: 600;
+    --witchhead-top: 90%;
+    --scrollWord1: 700;
     --witch-body-top: 0;
-    --witchhead-bottom: 50vh;
-    --scrollWord2: 1200;
-    /* --witch-height: 2500px; */
-    --scrollWord3: 2100;
-  }
-
-  #witch {
-    height: auto;
+    --witchhead-bottom: 80vh;
   }
 
   .witchhead {
     margin-left: -5px;
     transform: translateY(1000px);
-  }
-
-  body {
-    height: 4000px;
   }
 
   #witch {
